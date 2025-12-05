@@ -1,79 +1,75 @@
-import numpy as np
-
+import pandas as pd
 '''
-# 문제: numpy 배열 만들기
-arr = np.arange(10)
-print(arr)
+#문제: 데이터프레임 만들기
+data = {
+    "이름": ["현기", "철수", "영희"],
+    "나이": [28, 25, 30],
+    "점수": [85, 90, 88]
+}
 
-arr2 = np.arange(1, 10, 1)
-print(arr2)
+df = pd.DataFrame(data)
 
-# 문제: 2차원 배열 (reshape)
-arr = np.arange(12)
-print(arr)
+print(df['나이'])
 
-arr2d = arr.reshape(3, 4)
-print(arr2d)
+print(df.loc[2])
 
+# 개념: 조건 필터링
+data = {
+    "이름": ["현기", "철수", "영희", "민수"],
+    "나이": [28, 25, 30, 22],
+    "점수": [85, 90, 88, 75]
+}
+df = pd.DataFrame(data)
 
-# 문제: 배열 인덱싱
-arr = np.array([[1,2,3],
-                [4,5,6]])
+print(df[df['점수']>= 80])
 
-print(arr[0])
+print(df[df['나이']<=26])
 
-print(arr[1][1])
+# 개념: 새 열 추가
+data = {
+    "이름": ["현기", "철수", "영희"],
+    "키": [175, 180, 165],
+    "몸무게": [70, 75, 55]
+}
+df = pd.DataFrame(data)
 
-print(arr[:, 2])
+df['BMI'] = df['몸무게'] / ((df['키'] / 100) ** 2)
 
+df['비만'] = df["BMI"] >= 25
 
-# 문제: 배열 인덱싱
-arr = np.arange(20).reshape(4,5)
-print(arr)
+print(df)
 
-print(arr[:2,:3])
+# 개념: 통계 함수
+data = {
+    "이름": ["현기", "철수", "영희", "민수", "지수"],
+    "수학": [85, 90, 88, 75, 95],
+    "영어": [80, 85, 90, 70, 88]
+}
+df = pd.DataFrame(data)
 
-print(arr[2:4, 3:5])
+math_avg = df['수학'].mean()
+print(f'{math_avg}')
 
+eng_max = df['영어'].max()
+print(f'{eng_max}')
 
-# 문제: 배열 값 수정
-arr = np.arange(9).reshape(3, 3)
-print(arr)
+math_sum = df['수학'].sum()
+print(f'{math_sum}')
 
-arr[1][2] = 50
+#문제: 정렬
 
-arr[0] = [10, 20, 30]
+import pandas as pd
 
-print(arr)
+data = {
+    "이름": ["현기", "철수", "영희", "민수"],
+    "나이": [28, 25, 30, 22],
+    "점수": [85, 90, 88, 75]
+}
+df = pd.DataFrame(data)
 
+df1 = df.sort_values('점수')
+print(df1)
 
-# Boolean 인덱싱
-arr = np.array([10,25,30,45,50,15])
-
-result = arr[arr >= 30]
-print(result)
-
-result2 = arr[arr % 2 == 0]
-print(result2)
-
-result3 = arr[(arr>=20) & (arr<=40)]
-print(result3)
-
-
-# 문제: 배열 연산
-
-arr = np.array([1,2,3,4,5])
-
-result1 = arr + 10
-print(result1)
-
-result2 = arr * 2
-print(result2)
-
-result3 = arr.sum()
-print(result3)
-
-avarge = arr.mean()
-print(avarge)
-
+df2 = df.sort_values('나이', ascending=False)
+print(df2)
 '''
