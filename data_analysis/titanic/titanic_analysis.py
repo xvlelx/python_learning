@@ -46,8 +46,8 @@ print(f'Elderly: {elderly:.2f}%')
 plt.figure(figsize=(8,6))
 class_survival = df.groupby('Pclass')['Survived'].mean() * 100
 plt.bar(class_survival.index, class_survival.values)
-plt.title('Survival Rate by Sex')
-plt.xlabel('Sex')
+plt.title('Survival Rate by Class')
+plt.xlabel('Class')
 plt.ylabel('Survival Rate(%)')
 plt.ylim(0, 100)
 
